@@ -16,9 +16,10 @@ class PhotographerCard {
             <img src= ${imagePath}${this._photographer.portrait} />
             <h2>${this._photographer.name}</h2>
         </a>
-        <p class="name">${this._photographer.city}, ${this._photographer.country}</p>
+        <div><p class="name">${this._photographer.city}, ${this._photographer.country}</p>
         <p class="tagline">${this._photographer.tagline}</p>
         <p class="price">${this._photographer.price}€/jour</p>
+        </div>
         `
 
         this.$wrapper.innerHTML = card;

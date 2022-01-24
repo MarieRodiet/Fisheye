@@ -3,8 +3,15 @@
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   --primary: #901c1c;
   --secondary: #d3573c;
+}
+
+main {
+  margin: auto;
+  width: 100%;
 }
 
 header {
@@ -51,4 +58,24 @@ header h1 {
   width: 200px;
   border-radius: 200px;
   object-fit: cover;
+}
+
+.photographer_card div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  #photographer_section {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  #photographer_section {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
