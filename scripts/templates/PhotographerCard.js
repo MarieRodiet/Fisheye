@@ -10,16 +10,15 @@ class PhotographerCard {
 
     createPhotographerCard() {
         const imagePath = "assets/photographers/";
-        console.log()
         const card = `
-        <a class="card-link" href="#">
-            <img src= ${imagePath}${this._photographer.portrait} />
+        <a id=${this._photographer.id} class="card-link" href="#">
+            <img src= ${imagePath}${this._photographer.portrait} alt="${this._photographer.name}" />
             <h2>${this._photographer.name}</h2>
         </a>
-        <div><p class="name">${this._photographer.city}, ${this._photographer.country}</p>
+        <p class="location">${this._photographer.city}, ${this._photographer.country}</p>
         <p class="tagline">${this._photographer.tagline}</p>
         <p class="price">${this._photographer.price}€/jour</p>
-        </div>
+        
         `
 
         this.$wrapper.innerHTML = card;

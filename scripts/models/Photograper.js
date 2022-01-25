@@ -1,5 +1,5 @@
-class Photographer{
-    constructor(data){
+class Photographer {
+    constructor(data) {
         this._name = data.name;
         this._id = data.id;
         this._city = data.city;
@@ -10,32 +10,32 @@ class Photographer{
 
     }
 
-    getName(){
+    getName() {
         return this._name;
     }
 
-    getId(){
+    getId() {
         return this._id;
     }
 
-    getCity(){
+    getCity() {
         return this._city;
     }
 
-    getCountry(){
+    getCountry() {
         return this._country;
     }
 
-    getTagLine(){
+    getTagLine() {
         return this.tagline;
     }
 
-    getPrice(){
+    getPrice() {
         return this._price;
     }
 
-    getPortrait(){
+    getPortrait() {
         return `/assets/photographers/${this._portrait}`;
     }
-    
+
 }
