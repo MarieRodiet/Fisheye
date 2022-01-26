@@ -2,6 +2,7 @@ class App {
     constructor() {
         this._photographersSection = document.getElementById("photographer_section");
         this._api = new Api("data/photographers.json");
+
     }
 
     async getData() {
@@ -16,24 +17,27 @@ class App {
         })
     };
 
-    handleClick() {
+    handleClick(photographers) {
+        let selected = {};
         const allPhotographerCards = document.querySelectorAll(".card-link");
-        allPhotographerCards.forEach(el => el.addEventListener("click", function (event) {
-            console.log("eventListener works, do something!");
-            console.log("event: " + event.srcElement.alt);
-            console.log("this: " + this);
-            //console.log(el.attributes.id.value);
-            //allPhotographerCards[i].attribute.id.value = photographer.id!
+        allPhotographerCards.forEach(el => el.addEventListener("click", (event) => {
+            event.preventDefault();
+            selected = event.target.id;
+            console.log(selected);
+            displayPage(selected);
         }));
+        return selected;
+
     }
 
     async init() {
         let photographers = await this.getData();
         await this.displayData(photographers);
-        this.handleClick();
+        this.handleClick(photographers);
     };
 }
 
-
+var selected = "";
 const app = new App();
 app.init();
+

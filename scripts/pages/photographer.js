@@ -2,9 +2,6 @@ class photographer {
     constructor() {
         this._header = document.querySelector(".photograph-header");
         //this._photographer = new Photographer(photographer);
-    }
-
-    init() {
         let clickedOn = this.findPhotographer();
         this.displayPage(clickedOn);
     }
@@ -23,12 +20,13 @@ class photographer {
     }
 
     displayPage(photographer) {
-        const Template = new PhotographerPage(photographer);
+        const Template = displayHeader(photographer);
         console.log(Template);
-        //this._header.appendChild(Template.displayHeader());
+        //this._header.appendChild(Template);
     }
 }
-
 const page = new photographer();
-page.init();
+
+
+
 

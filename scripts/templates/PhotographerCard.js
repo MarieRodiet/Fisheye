@@ -4,24 +4,33 @@ class PhotographerCard {
     }
 
     createPhotographerCard() {
-        //onclick="getPhotographerId(${this._photographer})
+        let selected = {};
+        console.log("inside createPhotographerCard");
         const imagePath = "assets/photographers/";
         const $wrapper = document.createElement("article");
-        $wrapper.classList.add("photographer_card");
+        const $link = document.createElement("a");
+        $wrapper.className = "photographer_card";
+        $link.className = "card-link";
+        $link.id = this._photographer.id;
+        $link.addEventListener("mouseup", (event) => {
+            console.log("inside createPhotographerCard");
+            location.href = "photographer.html";
+        });
+
+
+        const linkContent =
+            ` <img class="profile" src= ${imagePath}${this._photographer.portrait} alt="${this._photographer.name}" />
+            <h2 class="profileName">${this._photographer.name}</h2>`;
         const photographerCard = `
-        <a id=${this._photographer.id} class="card-link" href="photographer.html">
-            <img class="profile" src= ${imagePath}${this._photographer.portrait} alt="${this._photographer.name}" />
-            <h2 class="profileName">${this._photographer.name}</h2>
-        </a>
         <p class="location">${this._photographer.city}, ${this._photographer.country}</p>
         <p class="tagline">${this._photographer.tagline}</p>
         <p class="price">${this._photographer.price}€/jour</p>
         `
+        $link.innerHTML = linkContent;
 
-        $wrapper.innerHTML = photographerCard;
+        $wrapper.appendChild($link);
+        $wrapper.innerHTML += photographerCard;
         return $wrapper;
     }
-
-
 
 }
