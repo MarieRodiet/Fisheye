@@ -22,7 +22,9 @@ class App {
         const allPhotographerCards = document.querySelectorAll(".card-link");
         allPhotographerCards.forEach(el => el.addEventListener("click", (event) => {
             event.preventDefault();
-            selected = event.target.id;
+            let id = el.id;
+            console.log("id: " + id);
+            selected = photographers.filter(el => el.id == id);
             console.log(selected);
             displayPage(selected);
         }));

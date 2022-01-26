@@ -2,8 +2,7 @@ class photographer {
     constructor() {
         this._header = document.querySelector(".photograph-header");
         //this._photographer = new Photographer(photographer);
-        let clickedOn = this.findPhotographer();
-        this.displayPage(clickedOn);
+        //let clickedOn = this.findPhotographer();
     }
 
     findPhotographer() {
