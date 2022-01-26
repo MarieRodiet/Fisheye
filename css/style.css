@@ -56,7 +56,7 @@ header h1 {
   height: 350px;
 }
 
-.photographer_card h2 {
+.profileName {
   color: var(--secondary);
   font-size: 2.5em;
   font-weight: 300;
@@ -64,7 +64,7 @@ header h1 {
   text-align: center;
 }
 
-.photographer_card img {
+.profile {
   height: 200px;
   width: 200px;
   border-radius: 200px;

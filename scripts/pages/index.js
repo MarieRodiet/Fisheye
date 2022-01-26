@@ -1,23 +1,39 @@
+class App {
+    constructor() {
+        this._photographersSection = document.getElementById("photographer_section");
+        this._api = new Api("data/photographers.json");
+    }
 
-async function getData() {
-    const api = new Api("data/photographers.json");
-    const photographersData = await api.getPhotographers();
-    return photographersData;
+    async getData() {
+        const photographersData = await this._api.getPhotographers();
+        return photographersData;
+    }
+
+    async displayData(photographers) {
+        photographers.forEach(photographer => {
+            const Template = new PhotographerCard(photographer);
+            this._photographersSection.appendChild(Template.createPhotographerCard());
+        })
+    };
+
+    handleClick() {
+        const allPhotographerCards = document.querySelectorAll(".card-link");
+        allPhotographerCards.forEach(el => el.addEventListener("click", function (event) {
+            console.log("eventListener works, do something!");
+            console.log("event: " + event.srcElement.alt);
+            console.log("this: " + this);
+            //console.log(el.attributes.id.value);
+            //allPhotographerCards[i].attribute.id.value = photographer.id!
+        }));
+    }
+
+    async init() {
+        let photographers = await this.getData();
+        await this.displayData(photographers);
+        this.handleClick();
+    };
 }
 
-async function displayData(photographers) {
-    const photographersSection = document.getElementById("photographer_section");
-    photographers.forEach(photographer => {
-        console.log("another photographer!");
-        const Template = new PhotographerCard(photographer);
-        photographersSection.appendChild(Template.createPhotographerCard());
-    })
-};
 
-async function init() {
-    let photographers = await getData();
-    await displayData(photographers);
-};
-
-
-init();
+const app = new App();
+app.init();

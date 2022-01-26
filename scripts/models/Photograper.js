@@ -1,41 +1,34 @@
 class Photographer {
     constructor(data) {
-        this._name = data.name;
-        this._id = data.id;
-        this._city = data.city;
-        this._country = data.country;
-        this._tagline = data.tagline;
-        this._price = data.price;
-        this._portrait = data.portrait;
-
+        this._photographer = data;
     }
 
-    getName() {
-        return this._name;
+    get name() {
+        return this._photographer.name;
     }
 
-    getId() {
-        return this._id;
+    get id() {
+        return this._photographer.id;
     }
 
-    getCity() {
-        return this._city;
+    get city() {
+        return this._photographer.city;
     }
 
-    getCountry() {
-        return this._country;
+    get country() {
+        return this._photographer.country;
     }
 
-    getTagLine() {
-        return this.tagline;
+    get tagline() {
+        return this._photographer.tagline;
     }
 
-    getPrice() {
-        return this._price;
+    get price() {
+        return this._photographer.price;
     }
 
-    getPortrait() {
-        return `/assets/photographers/${this._portrait}`;
+    get portrait() {
+        return `/assets/photographers/${this._photographer.portrait}`;
     }
 
 }
