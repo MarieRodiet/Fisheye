@@ -1,12 +1,11 @@
 class App {
     constructor() {
         this._photographersSection = document.getElementById("photographer_section");
-        this._api = new Api("data/photographers.json");
-
     }
 
     async getData() {
-        const photographersData = await this._api.getPhotographers();
+        const api = new Api("data/photographers.json");
+        const photographersData = await api.getPhotographers();
         return photographersData;
     }
 
@@ -20,13 +19,21 @@ class App {
     handleClick(photographers) {
         let selected = {};
         const allPhotographerCards = document.querySelectorAll(".card-link");
-        allPhotographerCards.forEach(el => el.addEventListener("click", (event) => {
+        allPhotographerCards.forEach(element => element.addEventListener("click", (event) => {
             event.preventDefault();
-            let id = el.id;
+            let id = element.id;
             console.log("id: " + id);
             selected = photographers.filter(el => el.id == id);
             console.log(selected);
-            displayPage(selected);
+            console.log(window.location.href);
+            let url = "http://127.0.0.1:5500/Front-End-Fisheye/photographer.html";
+            let parameter = "photographer=" + id;
+            const urlParams = new URLSearchParams(parameter);
+            const p = urlParams.get('photographer');
+            alert(p);
+            location.href = urlParams;
+            //save in localStorage and access it
+
         }));
         return selected;
 
@@ -39,7 +46,6 @@ class App {
     };
 }
 
-var selected = "";
 const app = new App();
 app.init();
 
