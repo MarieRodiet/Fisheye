@@ -3,6 +3,12 @@ class App {
         this._photographersSection = document.getElementById("photographer_section");
     }
 
+    async init() {
+        let photographers = await this.getData();
+        await this.displayData(photographers);
+        this.handleClick(photographers);
+    };
+
     async getData() {
         const api = new Api("data/photographers.json");
         const photographersData = await api.getPhotographers();
@@ -16,7 +22,7 @@ class App {
         })
     };
 
-    handleClick(photographers) {
+    handleClick() {
         let selected = {};
         const allPhotographerCards = document.querySelectorAll(".card-link");
         allPhotographerCards.forEach(element => element.addEventListener("click", (event) => {
@@ -25,17 +31,10 @@ class App {
             const url = new URL("http://127.0.0.1:5500/Front-End-Fisheye/photographer.html");
             url.searchParams.append("photographer", element.id);
             location.href = url;
-
         }));
         return selected;
 
     }
-
-    async init() {
-        let photographers = await this.getData();
-        await this.displayData(photographers);
-        this.handleClick(photographers);
-    };
 }
 
 const app = new App();

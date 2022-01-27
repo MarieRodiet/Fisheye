@@ -2,13 +2,14 @@ class photographer {
     constructor() {
         this._header = document.querySelector(".photograph-header");
         this.init();
-
     }
 
     async init() {
         let id = this.retrieveId();
-        let photographers = await this.retrievePhotographers();
-        this.findPhotographer(photographers, id);
+        let allPhotographers = await this.retrievePhotographers();
+        await this.findPhotographer(allPhotographers, id).then((p) => this.displayInfo(p));
+        let allMedia = await this.retrieveAllMedia();
+        await this.retrievePhotographersMedia(allMedia, id).then((m) => this.displayMedia(m));
     }
 
     retrieveId() {
@@ -23,16 +24,32 @@ class photographer {
         return photographers;
     }
 
-    findPhotographer(photographers, id) {
+    async findPhotographer(photographers, id) {
+        let clickedOn = photographers.filter(element => element.id == id);
+        return clickedOn;
+    }
+
+    async retrieveAllMedia() {
+        let api = new Api("data/photographers.json");
+        let media = await api.getMedia();
+        return media;
+    }
+
+    async retrievePhotographersMedia(allMedia, id) {
+        let result = allMedia.filter(element => element.photographerId == id);
+        return result;
+    }
+
+    displayInfo(p) {
+        const person = new Photographer(p[0]);
+        let newPage = new PhotographerPage(person);
+        const Template = newPage.displayHeader();
+    }
+
+    displayMedia(media) {
 
     }
 
-    /*displayPage(id) {
-        const Template = displayHeader(photographer);
-        console.log(Template);
-        //this._header.appendChild(Template);
-    }
-    */
 }
 const page = new photographer();
 
