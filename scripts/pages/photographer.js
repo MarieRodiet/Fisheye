@@ -1,28 +1,30 @@
 class photographer {
     constructor() {
         this._header = document.querySelector(".photograph-header");
-        let clickedOn = this.findPhotographer();
-        console.log(clickedOn);
+        this.init();
+
     }
 
-    showPage() {
-        console.log("here I am");
+    async init() {
+        let id = this.retrieveId();
+        let photographers = await this.retrievePhotographers();
+        this.findPhotographer(photographers, id);
+    }
+
+    retrieveId() {
         const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('photographer');
-        console.log(myParam)
+        const id = urlParams.get('photographer');
+        return id;
     }
 
-    findPhotographer() {
-        const p = {
-            name: "Mimi Keel",
-            id: "243",
-            city: "London",
-            country: "UK",
-            tagline: "Voir le beau dans le quotidien",
-            price: "400",
-            portrait: "MimiKeel.jpg"
-        };
-        return p;
+    async retrievePhotographers() {
+        let api = new Api("data/photographers.json");
+        let photographers = await api.getPhotographers();
+        return photographers;
+    }
+
+    findPhotographer(photographers, id) {
+
     }
 
     /*displayPage(id) {
@@ -33,7 +35,7 @@ class photographer {
     */
 }
 const page = new photographer();
-page.showPage();
+
 
 
 
