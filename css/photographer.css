@@ -30,6 +30,34 @@
   cursor: pointer;
 }
 
+.media {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  margin-top: 100px;
+}
+
+@media (max-width: 1000px) {
+  .media {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .media {
+    grid-template-columns: 1fr;
+  }
+}
+
+.photo {
+  max-width: 22em;
+  max-height: 19em;
+  object-fit: cover;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;

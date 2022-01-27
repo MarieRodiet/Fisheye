@@ -1,4 +1,4 @@
-class PhotographerPage {
+class PhotographerHeader {
     constructor(photographer) {
         this._photographer = photographer;
     }

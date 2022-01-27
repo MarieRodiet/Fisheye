@@ -10,35 +10,35 @@ class Media {
         this._video = data.video;
     }
 
-    getId() {
+    get id() {
         return this._id;
     }
 
-    getPhotographerId() {
+    get photographerId() {
         return this._photographerId;
     }
 
-    getTitle() {
+    get title() {
         return this._title;
     }
 
-    getImageName() {
+    get image() {
         return this._image;
     }
 
-    getLikes() {
+    get likes() {
         return this._likes;
     }
 
-    getDate() {
+    get date() {
         return this._date;
     }
     
-    getPrice() {
+    get price() {
         return this._price;
     }
 
-    getVideo() {
+    get video() {
         return this._video;
     }
 
