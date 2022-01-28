@@ -10,7 +10,7 @@ class photographer {
         let allPhotographers = await this.retrievePhotographers();
         let allMedia = await this.retrieveAllMedia();
 
-        await this.findPhotographer(allPhotographers, id).then((p) => this.displayInfo(p));
+        await this.findPhotographer(allPhotographers, id).then((p) => { this.displayInfo(p) });
         await this.retrieveMedia(allMedia, id).then((m) => this.displayMedia(m));
     }
 
@@ -50,10 +50,37 @@ class photographer {
 
     displayMedia(media) {
         media.forEach(m => {
-            const Template = new MediaTemplate(m);
-            console.log(Template);
-            this._mediaSection.appendChild(Template.displayMediaTemplate());
+            let name = this.getNameFromId(m.photographerId);
+            if (m.video) {
+                const Template = new VideoTemplate(m, name);
+                this._mediaSection.appendChild(Template.displayMediaTemplate());
+            }
+            else {
+                const Template = new ImageTemplate(m, name);
+                this._mediaSection.appendChild(Template.displayMediaTemplate());
+            }
+
+
         })
+    }
+
+    getNameFromId(id) {
+        let name = "";
+        switch (id) {
+            case 243: return name = "Mimi";
+                break;
+            case 930: return name = "Ellie Rose";
+                break;
+            case 82: return name = "Tracy";
+                break;
+            case 527: return name = "Nabeel";
+                break;
+            case 925: return name = "Rhode";
+                break;
+            case 195: return name = "Marcel";
+                break;
+            default: return name = "Mimi";
+        }
     }
 
 }
