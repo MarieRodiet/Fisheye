@@ -2,16 +2,25 @@ class photographer {
     constructor() {
         this._header = document.querySelector(".photograph-header");
         this._mediaSection = document.querySelector(".media");
+        this._filter = document.querySelector("#filter");
         this.init();
+        this.AllPhotographers = [];
+        this.AllMedia = [];
+        this.Photographer = {};
+        this.Media = [];
     }
 
     async init() {
         let id = this.retrieveId();
-        let allPhotographers = await this.retrievePhotographers();
-        let allMedia = await this.retrieveAllMedia();
+        this.AllPhotographers = await this.retrievePhotographers();
+        this.AllMedia = await this.retrieveAllMedia();
 
-        await this.findPhotographer(allPhotographers, id).then((p) => { this.displayInfo(p) });
-        await this.retrieveMedia(allMedia, id).then((m) => this.displayMedia(m));
+        this.Photographer = await this.findPhotographer(this.AllPhotographers, id).then((p) => { this.displayInfo(p) });
+        this.Media = await this.retrieveMedia(this.AllMedia, id).then((m) => {
+            this.displayMedia(m);
+            this.sortMedia(m);
+        });
+
     }
 
     retrieveId() {
@@ -51,16 +60,8 @@ class photographer {
     displayMedia(media) {
         media.forEach(m => {
             let name = this.getNameFromId(m.photographerId);
-            if (m.video) {
-                const Template = new VideoTemplate(m, name);
-                this._mediaSection.appendChild(Template.displayMediaTemplate());
-            }
-            else {
-                const Template = new ImageTemplate(m, name);
-                this._mediaSection.appendChild(Template.displayMediaTemplate());
-            }
-
-
+            const Template = new MediaTemplate(m, name);
+            this._mediaSection.appendChild(Template.displayMediaTemplate());
         })
     }
 
@@ -81,6 +82,11 @@ class photographer {
                 break;
             default: return name = "Mimi";
         }
+    }
+
+    sortMedia(media) {
+        const form = new SorterForm(media);
+        form.onChangeSorter();
     }
 
 }

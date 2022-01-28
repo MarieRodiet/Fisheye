@@ -17,8 +17,21 @@
     <a href="index.html" alt="Fisheye Home Page"><img src="assets/images/logo.png" class="logo" /></a>
   </header>
   <main id="main">
+
     <section class="photograph-header">
     </section>
+
+    <section id="filter-wrapper">
+      <label for="standard-select">Trier par:</label>
+      <div class="select">
+        <select id="standard-select">
+          <option value="popularity">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
+    </section>
+
     <section class="media">
     </section>
   </main>
@@ -39,8 +52,8 @@
   </div>
   <script src="scripts/api/api.js" defer></script>
   <script src="scripts/templates/PhotographerHeader.js" defer></script>
-  <script src="scripts/templates/ImageTemplate.js" defer></script>
-    <script src="scripts/templates/VideoTemplate.js" defer></script>
+  <script src="scripts/templates/MediaTemplate.js" defer></script>
+  <script src="scripts/templates/SorterForm.js" defer></script>
   <script src="scripts/pages/photographer.js" defer></script>
   <script src="scripts/models/Photograper.js" defer></script>
 

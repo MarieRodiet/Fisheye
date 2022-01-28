@@ -2,7 +2,9 @@
 @import url("modal.css");
 @import url("form.css");
 
-* {
+*,
+*::before,
+*::after {
   font-family: "DM Sans", sans-serif;
   margin: 0;
   padding: 0;
