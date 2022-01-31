@@ -15,10 +15,10 @@ class photographer {
         this.AllPhotographers = await this.retrievePhotographers();
         this.AllMedia = await this.retrieveAllMedia();
 
-        this.Photographer = await this.findPhotographer(this.AllPhotographers, id).then((p) => { this.displayInfo(p) });
-        this.Media = await this.retrieveMedia(this.AllMedia, id).then((m) => {
+        await this.findPhotographer(this.AllPhotographers, id).then((p) => { this.displayInfo(p) });
+        await this.retrieveMedia(this.AllMedia, id).then((m) => {
             this.displayMedia(m);
-            this.sortMedia(m);
+            this.unableSorter();
         });
 
     }
@@ -37,6 +37,7 @@ class photographer {
 
     async findPhotographer(photographers, id) {
         let clickedOn = photographers.filter(element => element.id == id);
+        this.Photographer = clickedOn;
         return clickedOn;
     }
 
@@ -48,6 +49,7 @@ class photographer {
 
     async retrieveMedia(allMedia, id) {
         let result = allMedia.filter(element => element.photographerId == id);
+        this.Media = result;
         return result;
     }
 
@@ -58,11 +60,14 @@ class photographer {
     }
 
     displayMedia(media) {
+        let likes = 0;
         media.forEach(m => {
             let name = this.getNameFromId(m.photographerId);
+            likes += m.likes
             const Template = new MediaTemplate(m, name);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
         })
+        console.log(likes);
     }
 
     getNameFromId(id) {
@@ -84,9 +89,40 @@ class photographer {
         }
     }
 
-    sortMedia(media) {
-        const form = new SorterForm(media);
-        form.onChangeSorter();
+    unableSorter() {
+        document.querySelector('.select')
+            .addEventListener('change', e => {
+                const sorter = e.target.value;
+                let sorted = this.sortMedia(sorter);
+                document.querySelector(".media").innerHTML = ""
+                console.log(sorted);
+                this.displayMedia(sorted);
+            })
+    }
+
+    sortMedia(sorter) {
+        console.log("NOT SORTED!");
+        let copy = this.Media.map(el => el);
+
+        let result = [];
+        if (sorter == "popularity") {
+            result = copy.sort(function (a, b) {
+                return a.likes - b.likes;
+            });
+        }
+        else if (sorter == "date") {
+            result = copy.sort(function (a, b) {
+                return new Date(b.date) - new Date(a.date);
+            });
+        }
+        else {
+            result = copy.sort(function (a, b) {
+                if (b.title < a.title) { return -1; }
+                if (b.title > a.title) { return 1; }
+                return 0;
+            });
+        }
+        return result;
     }
 
 }

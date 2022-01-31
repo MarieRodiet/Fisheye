@@ -33,11 +33,14 @@ HEADER
 FILTER
 ******/
 #filter-wrapper {
-  width: 400px;
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
 }
 
 label {
-  width: 100px;
+  font-size: 2em;
+  padding-right: 20px;
 }
 
 .select {
@@ -126,8 +129,8 @@ figcaption {
   }
 }
 
-@media (max-width: 600px) {
-  .media {
+@media (min-width: 300px) and (max-width: 600px) {
+  .media-element {
     grid-template-columns: 1fr;
     gap: 10px;
   }

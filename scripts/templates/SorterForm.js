@@ -3,40 +3,44 @@ class SorterForm {
         this.Media = Media;
     }
 
-    onChangeSorter() {
-        document.querySelector('.select')
-            .addEventListener('change', e => {
-                const sorter = e.target.value;
-                this.sortMovies(sorter);
-            })
-    }
 
-    sortMovies(sorter) {
-        console.log("NOT SORTED! : " + this.Media);
-        let copy = [...this.Media];
-        let result = [];
-        if (sorter == "popularity") {
-            console.log(" you chose popularity");
-            result = copy.sort(function (a, b) {
-                return a.likes - b.likes;
-            });
-        }
-        else if (sorter == "date") {
-            console.log(" you chose date");
-            result = copy.sort(function (a, b) {
-                return new Date(b.date) - new Date(a.date);
-            });
-        }
-        else {
-            console.log(" you chose title");
-            result = copy.sort(function (a, b) {
-                if (a.title < b.title) { return -1; }
-                if (a.title > b.title) { return 1; }
-                return 0;
-            });
-        }
-    }
 
 
 
 }
+const Media = [{
+    date: "2019-02-03",
+    id: 623534343,
+    image: "Travel_Lonesome.jpg",
+    likes: 88,
+    photographerId: 243,
+    price: 45,
+    title: "Lonesome"
+},
+{
+    date: "2019-02-03",
+    id: 623534343,
+    image: "Travel_Lonesome.jpg",
+    likes: 88,
+    photographerId: 243,
+    price: 45,
+    title: "Lonesome"
+},
+{
+    date: "2018-02-03",
+    id: 623534343,
+    image: "Travel.jpg",
+    likes: 88,
+    photographerId: 243,
+    price: 45,
+    title: "Lonesome"
+},
+{
+    date: "2018-02-03",
+    id: 623534343,
+    image: "jpg",
+    likes: 88,
+    photographerId: 243,
+    price: 45,
+    title: "Lonesome"
+}];
