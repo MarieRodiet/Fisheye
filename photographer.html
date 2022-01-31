@@ -9,12 +9,14 @@
   <link href="css/form.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
 </head>
 
 <body>
-  <header>
+  <header class="photographerPage-header">
     <a href="index.html" alt="Fisheye Home Page"><img src="assets/images/logo.png" class="logo" /></a>
   </header>
   <main id="main">
@@ -35,6 +37,8 @@
 
     <section class="media">
     </section>
+
+    <div class="likes-price"></div>
   </main>
   <div id="contact_modal">
     <div class="modal">
@@ -54,7 +58,7 @@
   <script src="scripts/api/api.js" defer></script>
   <script src="scripts/templates/PhotographerHeader.js" defer></script>
   <script src="scripts/templates/MediaTemplate.js" defer></script>
-  <script src="scripts/templates/SorterForm.js" defer></script>
+  <script src="scripts/templates/PriceLikesTemplate.js" defer></script>
   <script src="scripts/pages/photographer.js" defer></script>
   <script src="scripts/models/Photograper.js" defer></script>
 

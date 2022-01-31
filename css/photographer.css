@@ -1,20 +1,31 @@
 @import url("style.css");
+
+/* MOBILE */
+
+/*photographerPage-header*/
+.photographerPage-header {
+  height: 60px;
+  margin: 20px 0 0 10px;
+}
 /******
-HEADER
+PHOTOGRAPHER HEADER
 ******/
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
-  margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  align-items: center;
+  padding: 50px 0;
+  width: 100%;
 }
 
 .photographer-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
 .contact_button {
@@ -25,29 +36,57 @@ HEADER
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901c1c;
+  background-color: var(--primary);
   border-radius: 5px;
   cursor: pointer;
 }
+
+.PhotographerProfile {
+  height: 14em;
+  width: 14em;
+  border-radius: 14em;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.PhotographerName {
+  color: var(--secondary);
+  font-size: 2.4em;
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+}
+
+.PhotographerLocation {
+  color: var(--primary);
+  font-size: 1.5em;
+}
+
+.PhotographerTagline {
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
 /******
 FILTER
 ******/
 #filter-wrapper {
   display: flex;
   align-items: center;
-  margin: 30px 0;
+  justify-content: center;
+  padding: 20px 0;
 }
 
 label {
-  font-size: 2em;
+  font-size: 1.2em;
   padding-right: 20px;
 }
 
 .select {
   width: 170px;
   border: 1px solid #fff;
-  border-radius: 0.25em;
-  padding: 0.25em;
+  border-radius: 0.3em;
+  padding: 0.2em;
   font-size: 1.25rem;
   cursor: pointer;
   line-height: 1.1;
@@ -57,7 +96,7 @@ label {
 select {
   background-color: var(--primary);
   border: none;
-  padding: 1em;
+  padding: 0.6em;
   width: 100%;
   font-size: 20px;
   cursor: pointer;
@@ -70,38 +109,43 @@ MEDIA
 ******/
 .media {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
-  align-items: start;
-  margin-top: 100px;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 325px;
+  margin-top: 20px;
+  width: 100%;
 }
 
 .media-element {
   width: 100%;
-  max-width: 350px;
   margin: auto;
+  max-width: 350px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .picture-box {
-  width: 100%;
+  width: 90%;
+  margin: auto;
   max-width: 350px;
   max-height: 350px;
 }
 
 .photo,
 video {
-  width: 22em;
-  height: 19em;
+  width: 19em;
+  height: 16em;
   object-fit: cover;
   border-radius: 10px;
 }
 
 figcaption {
+  width: 95%;
+  margin: auto;
+  max-width: 350px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  margin: 0 0 10px 0;
 }
 
 .media-title,
@@ -122,16 +166,163 @@ figcaption {
   color: var(--primary);
 }
 
-@media (max-width: 1000px) {
+/*INFO BOX */
+.likes-price aside {
+  color: black;
+  background-color: #da8776;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  height: 60px;
+  width: 200px;
+  position: fixed;
+  bottom: 0;
+  right: 10%;
+  padding: 5px;
+}
+
+.heart-contentInBox {
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.svg-boxInBox {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* TABLET VERSION */
+@media only screen and (min-width: 716px) {
+  /* HEADER */
+  .photographerPage-header {
+    height: 80px;
+  }
+
+  /* MAIN */
+  #main {
+    width: 95%;
+  }
+
+  .photograph-header {
+    flex-direction: row;
+    border-radius: 0.4em;
+    padding: 20px;
+  }
+
+  .photographer-info {
+    align-items: flex-start;
+  }
+
+  .PhotographerProfile {
+    height: 11em;
+    width: 11em;
+    border-radius: 11em;
+    margin-top: 0px;
+  }
+
+  .PhotographerName {
+    font-size: 2em;
+  }
+
+  .PhotographerLocation {
+    font-size: 1.2em;
+  }
+
+  .PhotographerTagline {
+    font-size: 0.9em;
+  }
+
+  .contact_button {
+    font-size: 18px;
+    padding: 7px;
+    width: 160px;
+    height: 60px;
+  }
+
   .media {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
   }
 }
 
-@media (min-width: 300px) and (max-width: 600px) {
+/* DESKTOP VERSION */
+@media only screen and (min-width: 1100px) {
+  #main {
+    width: 80%;
+  }
+
+  .photographer-info {
+    padding: 0;
+  }
+
+  .PhotographerProfile {
+    height: 12.5em;
+    width: 12.5em;
+    border-radius: 12.5em;
+  }
+
+  .PhotographerName {
+    font-size: 2.8em;
+    font-weight: 200;
+  }
+
+  .PhotographerLocation {
+    font-size: 1.6em;
+  }
+
+  .PhotographerTagline {
+    font-size: 1.2em;
+    font-weight: 100;
+  }
+
+  #filter-wrapper {
+    justify-content: flex-start;
+  }
+  .media {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 310px;
+  }
+
   .media-element {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    width: 90%;
+    margin: auto;
+    max-width: 320px;
+  }
+
+  .picture-box {
+    max-width: 330px;
+  }
+
+  .photo,
+  video {
+    width: 17em;
+    height: 14em;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  figcaption {
+    width: 95%;
+    margin: 0;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* LARGE DESKTOP VERSION */
+@media only screen and (min-width: 1500px) {
+  .media {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .PhotographerProfile {
+    height: 14em;
+    width: 15em;
+    border-radius: 14em;
   }
 }

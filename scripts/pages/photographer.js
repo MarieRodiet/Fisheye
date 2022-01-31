@@ -3,11 +3,13 @@ class photographer {
         this._header = document.querySelector(".photograph-header");
         this._mediaSection = document.querySelector(".media");
         this._filter = document.querySelector("#filter");
+        this._infoBox = document.querySelector(".likes-price");
         this.init();
         this.AllPhotographers = [];
         this.AllMedia = [];
         this.Photographer = {};
         this.Media = [];
+        this.price = 0;
     }
 
     async init() {
@@ -15,10 +17,11 @@ class photographer {
         this.AllPhotographers = await this.retrievePhotographers();
         this.AllMedia = await this.retrieveAllMedia();
 
-        await this.findPhotographer(this.AllPhotographers, id).then((p) => { this.displayInfo(p) });
+        await this.findPhotographer(this.AllPhotographers, id).then((p) => { this.displayInfo(p); });
         await this.retrieveMedia(this.AllMedia, id).then((m) => {
             this.displayMedia(m);
             this.unableSorter();
+
         });
 
     }
@@ -55,6 +58,7 @@ class photographer {
 
     displayInfo(p) {
         const person = new Photographer(p[0]);
+        this.price = person.price;
         let newPage = new PhotographerHeader(person);
         newPage.displayHeader();
     }
@@ -64,10 +68,13 @@ class photographer {
         media.forEach(m => {
             let name = this.getNameFromId(m.photographerId);
             likes += m.likes
-            const Template = new MediaTemplate(m, name);
+            const Template = new MediaTemplate(m, name, this.price);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
+
         })
-        console.log(likes);
+        const Box = new PriceLikesTemplate(this.price, likes);
+        this._infoBox.appendChild(Box.displayPriceAndLikes());
+
     }
 
     getNameFromId(id) {

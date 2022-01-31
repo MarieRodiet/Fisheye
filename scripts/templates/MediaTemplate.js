@@ -7,7 +7,7 @@ class MediaTemplate {
     displayMediaTemplate() {
         const $wrapper = document.createElement("div");
         $wrapper.className = "media-element";
-        if(this._media.video){
+        if (this._media.video) {
             const videoCard = `
                 <figure class="picture-box">
                     <video width="350" height="300" muted src="assets/images/${this._name}/${this._media.video}" type="video/mp4">
