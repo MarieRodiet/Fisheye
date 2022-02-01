@@ -15,7 +15,7 @@
   <title>Fisheye - photographe </title>
 </head>
 
-<body>
+<body class="photographer-body">
   <header class="photographerPage-header">
     <a href="index.html" alt="Fisheye Home Page"><img src="assets/images/logo.png" class="logo" /></a>
   </header>
@@ -41,24 +41,12 @@
     <div class="likes-price"></div>
   </main>
   <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
-        </div>
-        <button class="contact_button">Envoyer</button>
-      </form>
-    </div>
   </div>
   <script src="scripts/api/api.js" defer></script>
   <script src="scripts/templates/PhotographerHeader.js" defer></script>
   <script src="scripts/templates/MediaTemplate.js" defer></script>
   <script src="scripts/templates/PriceLikesTemplate.js" defer></script>
+  <script src="scripts/templates/ContactTemplate.js" defer></script>
   <script src="scripts/pages/photographer.js" defer></script>
   <script src="scripts/models/Photograper.js" defer></script>
 

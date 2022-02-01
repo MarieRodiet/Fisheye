@@ -12,7 +12,7 @@ class PhotographerHeader {
             <p class="PhotographerLocation">${this._photographer.city}, ${this._photographer.country}</p>
             <p class="PhotographerTagline">${this._photographer.tagline}</p>
         </div>
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button class="contact_button">Contactez-moi</button>
         <img class="PhotographerProfile" src= ${imagePath}${this._photographer.portrait} alt="${this._photographer.name}" />
         `
         $wrapper.innerHTML = header;

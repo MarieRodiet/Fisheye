@@ -17,7 +17,11 @@ class photographer {
         this.AllPhotographers = await this.retrievePhotographers();
         this.AllMedia = await this.retrieveAllMedia();
 
-        await this.findPhotographer(this.AllPhotographers, id).then((p) => { this.displayInfo(p); });
+        await this.findPhotographer(this.AllPhotographers, id).then((p) => {
+            const person = new Photographer(p[0]);
+            this.displayInfo(person);
+            this.handleModal(person);
+        });
         await this.retrieveMedia(this.AllMedia, id).then((m) => {
             this.displayMedia(m);
             this.unableSorter();
@@ -56,11 +60,23 @@ class photographer {
         return result;
     }
 
-    displayInfo(p) {
-        const person = new Photographer(p[0]);
+    displayInfo(person) {
         this.price = person.price;
         let newPage = new PhotographerHeader(person);
         newPage.displayHeader();
+        //let contactForm = new ContactTemplate(person.name);
+        //contactForm.displayForm();
+
+    }
+
+    handleModal(person) {
+        const btn = document.querySelector(".contact_button");
+        const modal = document.querySelector("#contact_modal");
+        btn.addEventListener("click", () => {
+            let modal = new ContactTemplate(person.name);
+            modal.displayForm();
+        })
+
     }
 
     displayMedia(media) {

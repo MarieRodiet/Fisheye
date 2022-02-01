@@ -2,33 +2,70 @@
 @import url("style.css");
 @import url("form.css");
 
-#contact_modal {
-  display: none;
+body {
+  position: relative;
+}
+
+.blurry {
+  filter: opacity(50%);
 }
 
 .modal {
-  border-radius: 5px;
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
   background-color: #db8876;
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
-  margin: auto;
+  padding: 15px;
 }
 
-.modal header {
+.modal-header {
+  display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
 }
 
-.modal header img {
+.modal-header img {
   cursor: pointer;
 }
 
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
+.modal-header h2 {
+  font-size: 2.5em;
+  font-weight: 200;
+  text-align: start;
+}
+
+.labels {
+  font-size: 1.5em;
+}
+
+.inputs {
+  height: 50px;
+}
+
+#message-input {
+  height: 90px;
+}
+
+.contact_button {
+  margin: 10px 0;
+}
+
+/* TABLET VERSION */
+@media only screen and (min-width: 516px) {
+  .modal {
+    width: 90%;
+    max-width: 450px;
+  }
+}
+
+/* DESKTOP VERSION */
+@media only screen and (min-width: 700px) {
 }

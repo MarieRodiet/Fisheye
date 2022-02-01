@@ -28,7 +28,7 @@ class App {
         allPhotographerCards.forEach(element => element.addEventListener("click", (event) => {
             event.preventDefault();
             console.log("photographer id: " + element.id);
-            const url = new URL("http://127.0.0.1:5500/Front-End-Fisheye/photographer.html");
+            const url = new URL("http://127.0.0.1:5500/MarieMoore_6_22022022/photographer.html");
             url.searchParams.append("photographer", element.id);
             location.href = url;
         }));
