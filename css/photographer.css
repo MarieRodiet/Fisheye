@@ -10,7 +10,7 @@
 /******
 PHOTOGRAPHER HEADER
 ******/
-.photograph-header {
+.header-wrapper {
   background-color: #fafafa;
   display: flex;
   flex-direction: column;
@@ -206,7 +206,7 @@ figcaption {
     width: 95%;
   }
 
-  .photograph-header {
+  .header-wrapper {
     flex-direction: row;
     border-radius: 0.4em;
     padding: 20px;

@@ -10,6 +10,7 @@ class PhotographerHeader {
 
     displayHeader() {
         const imagePath = "assets/photographers/";
+        this.$wrapper.className = "header-wrapper";
         const header = `
         <div class="photographer-info">
             <h2 class="PhotographerName">${this._photographer.name}</h2>

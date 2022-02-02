@@ -6,13 +6,14 @@ class photographer {
         this._photographerPageHeader = document.querySelector(".photographerPage-header");
         this._modalContainer = document.querySelector("#modal-container");
         this._main = document.querySelector("#main");
-        this.init();
         this.AllPhotographers = [];
         this.AllMedia = [];
         this.Photographer = {};
         this.Media = [];
         this.price = 0;
         this.formInputs = [];
+
+        this.init();
     }
 
     async init() {
@@ -28,17 +29,6 @@ class photographer {
             this.displayMedia(m);
             this.unableSorter();
         });
-
-        if (this._modalContainer.childNodes.length > 1) {
-            console.log("the form is displayed, make background blurry");
-            console.log(this._modalContainer.childNodes.length);
-            //this._header.className = "blurry";
-            //this._main.className = "blurry";
-        }
-        else if (!this._modalContainer.hasChildNodes()) {
-            console.log("the form is gone, make background clear!");
-        }
-
     }
 
     retrieveId() {
@@ -72,8 +62,6 @@ class photographer {
     }
 
     displayInfo(person) {
-        const name = person.name;
-        const id = person.id;
         let newPage = new PhotographerHeader(person);
         newPage.displayHeader();
     }
