@@ -14,7 +14,6 @@ class ContactTemplate {
         this.closeModal = this.closeModal.bind(this);
         this.validateData = this.validateData.bind(this);
         this.handleData = this.handleData.bind(this);
-        this.isValid = this.isValid.bind(this);
     }
 
     displayForm() {
@@ -45,7 +44,7 @@ class ContactTemplate {
 
             <div class="formData">
                 <label class="labels" for="message">Votre message</label>
-                <textarea class="inputs" minlength="2" id="message" type="text" name="message" required>
+                <textarea class="inputs" minlength="2" id="message" type="text" name="message" rows="5" cols="33" required>
                 </textarea>
             </div>
         <button type="submit" class="contact_button">Envoyer</button>

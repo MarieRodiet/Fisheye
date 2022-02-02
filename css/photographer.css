@@ -41,6 +41,13 @@ PHOTOGRAPHER HEADER
   cursor: pointer;
 }
 
+  .contact_button:hover, .contact_button:focus {
+    background-color: var(--secondary);
+    color: black;
+  }
+
+
+
 .PhotographerProfile {
   height: 14em;
   width: 14em;
@@ -169,7 +176,7 @@ figcaption {
 /*INFO BOX */
 .likes-price aside {
   color: black;
-  background-color: #da8776;
+  background-color: var(--secondary);
   display: flex;
   justify-content: space-around;
   align-items: center;
