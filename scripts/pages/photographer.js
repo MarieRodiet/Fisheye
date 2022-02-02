@@ -1,15 +1,18 @@
 class photographer {
     constructor() {
-        this._header = document.querySelector(".photograph-header");
         this._mediaSection = document.querySelector(".media");
         this._filter = document.querySelector("#filter");
         this._infoBox = document.querySelector(".likes-price");
+        this._photographerPageHeader = document.querySelector(".photographerPage-header");
+        this._modalContainer = document.querySelector("#modal-container");
+        this._main = document.querySelector("#main");
         this.init();
         this.AllPhotographers = [];
         this.AllMedia = [];
         this.Photographer = {};
         this.Media = [];
         this.price = 0;
+        this.formInputs = [];
     }
 
     async init() {
@@ -20,13 +23,21 @@ class photographer {
         await this.findPhotographer(this.AllPhotographers, id).then((p) => {
             const person = new Photographer(p[0]);
             this.displayInfo(person);
-            this.handleModal(person);
         });
         await this.retrieveMedia(this.AllMedia, id).then((m) => {
             this.displayMedia(m);
             this.unableSorter();
-
         });
+
+        if (this._modalContainer.childNodes.length > 1) {
+            console.log("the form is displayed, make background blurry");
+            console.log(this._modalContainer.childNodes.length);
+            //this._header.className = "blurry";
+            //this._main.className = "blurry";
+        }
+        else if (!this._modalContainer.hasChildNodes()) {
+            console.log("the form is gone, make background clear!");
+        }
 
     }
 
@@ -61,22 +72,10 @@ class photographer {
     }
 
     displayInfo(person) {
-        this.price = person.price;
+        const name = person.name;
+        const id = person.id;
         let newPage = new PhotographerHeader(person);
         newPage.displayHeader();
-        //let contactForm = new ContactTemplate(person.name);
-        //contactForm.displayForm();
-
-    }
-
-    handleModal(person) {
-        const btn = document.querySelector(".contact_button");
-        const modal = document.querySelector("#contact_modal");
-        btn.addEventListener("click", () => {
-            let modal = new ContactTemplate(person.name);
-            modal.displayForm();
-        })
-
     }
 
     displayMedia(media) {
@@ -130,7 +129,7 @@ class photographer {
         let result = [];
         if (sorter == "popularity") {
             result = copy.sort(function (a, b) {
-                return a.likes - b.likes;
+                return b.likes - a.likes;
             });
         }
         else if (sorter == "date") {
@@ -140,8 +139,8 @@ class photographer {
         }
         else {
             result = copy.sort(function (a, b) {
-                if (b.title < a.title) { return -1; }
-                if (b.title > a.title) { return 1; }
+                if (b.title < a.title) { return 1; }
+                if (b.title > a.title) { return -1; }
                 return 0;
             });
         }

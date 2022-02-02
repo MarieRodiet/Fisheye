@@ -6,8 +6,16 @@ body {
   position: relative;
 }
 
+.disappear {
+  display: none;
+}
+
 .blurry {
   filter: opacity(50%);
+}
+
+.clear {
+  filter: opacity(100%);
 }
 
 .modal {
@@ -32,7 +40,7 @@ body {
   width: 100%;
 }
 
-.modal-header img {
+.close_modal {
   cursor: pointer;
 }
 
