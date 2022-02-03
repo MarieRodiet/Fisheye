@@ -1,5 +1,5 @@
 @import url("photographer.css");
-@import url("modal.css");
+@import url("lightbox.css");
 @import url("form.css");
 *,
 *::before,
@@ -27,11 +27,12 @@
 .mainPage-header h1 {
   font-size: 1em;
   color: var(--primary);
+  margin-right: calc(0.1rem + 3vw);
 }
 
 .logo {
   height: 40px;
-  margin-left: calc(0.3rem + 3vw);
+  margin-left: calc(0.1rem + 3vw);
 }
 
 /* MAIN */
@@ -108,6 +109,11 @@ main {
   /* HEADER */
   .mainPage-header h1 {
     font-size: 1.5em;
+    margin-right: calc(0.3rem + 3vw);
+  }
+
+  .logo {
+    margin-left: calc(0.3rem + 3vw);
   }
 
   /* MAIN */

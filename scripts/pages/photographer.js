@@ -5,13 +5,12 @@ class photographer {
         this._infoBox = document.querySelector(".likes-price");
         this._photographerPageHeader = document.querySelector(".photographerPage-header");
         this._modalContainer = document.querySelector("#modal-container");
-        this._main = document.querySelector("#main");
         this.AllPhotographers = [];
         this.AllMedia = [];
         this.Photographer = {};
         this.Media = [];
         this.price = 0;
-        this.formInputs = [];
+
 
         this.init();
     }
@@ -23,11 +22,13 @@ class photographer {
 
         await this.findPhotographer(this.AllPhotographers, id).then((p) => {
             const person = new Photographer(p[0]);
+            this.price = person.price;
             this.displayInfo(person);
         });
         await this.retrieveMedia(this.AllMedia, id).then((m) => {
             this.displayMedia(m);
             this.unableSorter();
+            this.unableLightBox(m);
         });
     }
 
@@ -77,7 +78,17 @@ class photographer {
         })
         const Box = new PriceLikesTemplate(this.price, likes);
         this._infoBox.appendChild(Box.displayPriceAndLikes());
+    }
 
+    unableLightBox() {
+        let medias = this._mediaSection.querySelectorAll(".media-element");
+        medias[0].addEventListener("click", event => {
+            console.log("you clicked!");
+            console.log("this: ");
+            console.log(this);
+            console.log("event: ");
+            console.log(event);
+        })
     }
 
     getNameFromId(id) {
@@ -104,16 +115,13 @@ class photographer {
             .addEventListener('change', e => {
                 const sorter = e.target.value;
                 let sorted = this.sortMedia(sorter);
-                document.querySelector(".media").innerHTML = ""
-                console.log(sorted);
+                this._mediaSection.innerHTML = ""
                 this.displayMedia(sorted);
             })
     }
 
     sortMedia(sorter) {
-        console.log("NOT SORTED!");
         let copy = this.Media.map(el => el);
-
         let result = [];
         if (sorter == "popularity") {
             result = copy.sort(function (a, b) {

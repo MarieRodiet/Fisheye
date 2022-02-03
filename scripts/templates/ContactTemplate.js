@@ -44,10 +44,9 @@ class ContactTemplate {
 
             <div class="formData">
                 <label class="labels" for="message">Votre message</label>
-                <textarea class="inputs" minlength="2" id="message" type="text" name="message" rows="5" cols="33" required>
-                </textarea>
+                <textarea class="inputs" minlength="2" id="message" type="text" name="message" rows="5" cols="33" required></textarea>
             </div>
-        <button type="submit" class="contact_button">Envoyer</button>
+        <button type="submit" class="send_button">Envoyer</button>
         </form>`;
         this.$wrapper.innerHTML = form;
 

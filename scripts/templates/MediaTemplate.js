@@ -5,7 +5,7 @@ class MediaTemplate {
     }
 
     displayMediaTemplate() {
-        const $wrapper = document.createElement("div");
+        const $wrapper = document.createElement("a");
         $wrapper.className = "media-element";
         if (this._media.video) {
             const videoCard = `
