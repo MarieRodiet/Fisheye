@@ -5,30 +5,35 @@ class photographer {
         this._infoBox = document.querySelector(".likes-price");
         this._photographerPageHeader = document.querySelector(".photographerPage-header");
         this._modalContainer = document.querySelector("#modal-container");
+        this._main = document.querySelector("#main");
+
         this.AllPhotographers = [];
         this.AllMedia = [];
+
         this.Photographer = {};
         this.Media = [];
         this.price = 0;
-
+        this.name = "";
 
         this.init();
+        this.unableLightBox = this.unableLightBox.bind(this);
     }
 
     async init() {
-        let id = this.retrieveId();
+        this.id = this.retrieveId();
         this.AllPhotographers = await this.retrievePhotographers();
         this.AllMedia = await this.retrieveAllMedia();
 
-        await this.findPhotographer(this.AllPhotographers, id).then((p) => {
+        await this.findPhotographer(this.AllPhotographers, this.id).then((p) => {
             const person = new Photographer(p[0]);
+            this.Photographer = person;
             this.price = person.price;
             this.displayInfo(person);
         });
-        await this.retrieveMedia(this.AllMedia, id).then((m) => {
+        await this.retrieveMedia(this.AllMedia, this.id).then((m) => {
             this.displayMedia(m);
             this.unableSorter();
-            this.unableLightBox(m);
+            this.unableLightBox(this.id);
         });
     }
 
@@ -70,9 +75,9 @@ class photographer {
     displayMedia(media) {
         let likes = 0;
         media.forEach(m => {
-            let name = this.getNameFromId(m.photographerId);
+            this.name = this.getNameFromId(m.photographerId);
             likes += m.likes
-            const Template = new MediaTemplate(m, name, this.price);
+            const Template = new MediaTemplate(m, this.name, this.price);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
 
         })
@@ -81,33 +86,34 @@ class photographer {
     }
 
     unableLightBox() {
-        let medias = this._mediaSection.querySelectorAll(".media-element");
-        medias[0].addEventListener("click", event => {
-            console.log("you clicked!");
-            console.log("this: ");
-            console.log(this);
-            console.log("event: ");
-            console.log(event);
-        })
+        let boxes = document.querySelectorAll(".media .media-element");
+        boxes.forEach(el => el.addEventListener("click", event => {
+            const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
+            LightBox.displayLightBox();
+            this._photographerPageHeader.style.display = "none";
+            this._main.style.display = "none";
+        }));
+
     }
 
     getNameFromId(id) {
         let name = "";
         switch (id) {
-            case 243: return name = "Mimi";
+            case 243: name = "Mimi";
                 break;
-            case 930: return name = "Ellie Rose";
+            case 930: name = "Ellie Rose";
                 break;
-            case 82: return name = "Tracy";
+            case 82: name = "Tracy";
                 break;
-            case 527: return name = "Nabeel";
+            case 527: name = "Nabeel";
                 break;
-            case 925: return name = "Rhode";
+            case 925: name = "Rhode";
                 break;
-            case 195: return name = "Marcel";
+            case 195: name = "Marcel";
                 break;
-            default: return name = "Mimi";
+            default: name = "Mimi";
         }
+        return name;
     }
 
     unableSorter() {
