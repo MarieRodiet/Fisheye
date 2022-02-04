@@ -1,4 +1,6 @@
 @import url("style.css");
+@import url("form.css");
+@import url("lightbox.css");
 
 /* MOBILE */
 
@@ -29,6 +31,8 @@ PHOTOGRAPHER HEADER
 }
 
 .contact_button {
+  position: relative;
+  z-index: 3;
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -38,10 +42,13 @@ PHOTOGRAPHER HEADER
   border: none;
   background-color: var(--primary);
   border-radius: 5px;
-  cursor: pointer;
 }
 
-.contact_button:hover,
+.contact_button:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
+  color: black;
+}
 .contact_button:focus {
   background-color: var(--secondary);
   color: black;

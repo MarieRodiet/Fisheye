@@ -43,7 +43,6 @@ class MediaTemplate {
                 </figure>`;
             $wrapper.innerHTML = mediaCard;
         }
-
         return $wrapper;
     }
 }

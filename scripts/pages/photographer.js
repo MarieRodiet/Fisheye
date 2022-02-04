@@ -70,6 +70,7 @@ class photographer {
     displayInfo(person) {
         let newPage = new PhotographerHeader(person);
         newPage.displayHeader();
+        newPage.unableContactMeBtn();
     }
 
     displayMedia(media) {
@@ -79,7 +80,6 @@ class photographer {
             likes += m.likes
             const Template = new MediaTemplate(m, this.name, this.price);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
-
         })
         const Box = new PriceLikesTemplate(this.price, likes);
         this._infoBox.appendChild(Box.displayPriceAndLikes());
