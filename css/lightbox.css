@@ -3,46 +3,44 @@
 @import url("form.css");
 
 .lightbox {
-  width: 90%;
+  width: 100%;
+  max-width: 700px;
   height: 90vh;
-  margin: 0 10%;
   position: absolute;
   top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.lightbox figure {
+  width: 90%;
 }
 
 .arrow-box {
-  width: 30px;
-  height: 50px;
+  width: 5%;
   color: var(--primary);
   fill: currentColor;
-  margin: 30px;
+  margin: 15px;
 }
 
 .close_lightbox {
   color: var(--primary);
   fill: currentColor;
   position: absolute;
-  top: 0;
-  right: 8%;
-  width: 30px;
-  height: 30px;
+  top: -50px;
+  right: 3%;
+  width: 7%;
+  height: 5%;
 }
 
 .close_lightbox:hover {
   cursor: pointer;
 }
 
-.lightbox-image {
-  margin: auto;
-  width: 100%;
-  max-width: 700px;
-  height: 90vh;
-  object-fit: cover;
-}
-
+.lightbox-image,
 .lightbox-video {
   margin: auto;
   width: 100%;
@@ -53,6 +51,20 @@
 
 .lightbox-figure figcaption {
   color: var(--primary);
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin-left: 0;
+  font-weight: 100;
+}
+
+@media only screen and (min-width: 516px) {
+  .close_lightbox {
+    right: 2%;
+    width: 7%;
+    max-width: 42px;
+    max-height: 42px;
+    height: 5%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
 }
