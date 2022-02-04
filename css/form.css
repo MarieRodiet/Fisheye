@@ -42,11 +42,6 @@ body {
   cursor: pointer;
 }
 
-.close_modal {
-  position: relative;
-  z-index: 4;
-}
-
 form div {
   display: flex;
   flex-direction: column;
@@ -107,8 +102,6 @@ textarea:focus {
 }
 
 .send_button {
-  position: relative;
-  z-index: 3;
   font-size: 20px;
   font-weight: bold;
   color: white;

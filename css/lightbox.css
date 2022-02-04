@@ -4,11 +4,10 @@
 
 .lightbox {
   width: 90%;
-  height: 99vh;
-  margin: auto;
+  height: 90vh;
+  margin: 0 10%;
   position: absolute;
-  top: 1vh;
-  margin: 5%;
+  top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +18,7 @@
   height: 50px;
   color: var(--primary);
   fill: currentColor;
+  margin: 30px;
 }
 
 .close_lightbox {
@@ -26,7 +26,7 @@
   fill: currentColor;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 8%;
   width: 30px;
   height: 30px;
 }
@@ -35,10 +35,24 @@
   cursor: pointer;
 }
 
-.lightbox-content {
+.lightbox-image {
   margin: auto;
   width: 100%;
   max-width: 700px;
   height: 90vh;
   object-fit: cover;
+}
+
+.lightbox-video {
+  margin: auto;
+  width: 100%;
+  max-width: 700px;
+  height: 90vh;
+  object-fit: cover;
+}
+
+.lightbox-figure figcaption {
+  color: var(--primary);
+  font-size: 1.2em;
+  margin-left: 0;
 }
