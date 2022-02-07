@@ -112,11 +112,16 @@ textarea:focus {
   background-color: var(--primary);
   border-radius: 5px;
   cursor: pointer;
+  outline: none;
 }
 
 .send_button:hover {
   color: var(--primary);
   background-color: #fafafa;
+}
+
+.send_button:focus {
+  outline: none;
 }
 
 /* TABLET VERSION */

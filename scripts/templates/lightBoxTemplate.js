@@ -79,41 +79,64 @@ class LightBoxTemplate {
     }
 
     handleCloselightbox() {
+        window.addEventListener("keyup", (event) => {
+            if (event.key === "Escape") {
+                this.closelightbox();
+            }
+        });
         this.$wrapper.querySelector(".close_lightbox").addEventListener("click", () => {
             this.closelightbox();
-        })
+        });
     }
 
     closelightbox() {
-        this.$lightboxContainer.removeChild(document.querySelector(".lightbox"));
+        this.$lightboxContainer.innerHTML = "";
         this._photographerPageHeader.style.display = "block";
         this._main.style.display = "block";
     }
 
     handleNext() {
         this.$wrapper.querySelector(".next").addEventListener("click", () => {
-            const max = this.length - 1;
-            if (this.index < max) {
-                this.index += 1;
+            this.next();
+        });
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowRight") {
+                this.next();
             }
-            else {
-                this.index = 0;
-            }
-            this.$lightboxContainer.innerHTML = "";
-            this.displayLightBox();
         })
+    }
+
+    next() {
+        const max = this.length - 1;
+        if (this.index < max) {
+            this.index += 1;
+        }
+        else {
+            this.index = 0;
+        }
+        this.$lightboxContainer.innerHTML = "";
+        this.displayLightBox();
+    }
+
+    previous() {
+        if (this.index == 0) {
+            this.index = this.length - 1;
+        }
+        else {
+            this.index--;
+        }
+        this.$lightboxContainer.innerHTML = "";
+        this.displayLightBox();
     }
 
     handlePrevious() {
         this.$wrapper.querySelector(".previous").addEventListener("click", () => {
-            if (this.index == 0) {
-                this.index = this.length - 1;
+            this.previous();
+        });
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft") {
+                this.previous();
             }
-            else {
-                this.index--;
-            }
-            this.$lightboxContainer.innerHTML = "";
-            this.displayLightBox();
         })
     }
 }

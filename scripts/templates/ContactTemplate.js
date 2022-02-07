@@ -58,10 +58,15 @@ class ContactTemplate {
         this.$wrapper.querySelector(".close_modal").addEventListener("click", () => {
             this.closeModal();
         })
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                this.closeModal();
+            }
+        })
     }
 
     closeModal() {
-        this._modalContainer.removeChild(document.querySelector(".modal"));
+        this._modalContainer.innerHTML = "";
         this._header.classList.remove("blurry");
         this._main.classList.remove("blurry");
     }

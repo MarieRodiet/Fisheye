@@ -114,7 +114,6 @@ class photographer {
     unableLightBox() {
         let boxes = document.querySelectorAll(".media .photo, .media .video");
         boxes.forEach(el => el.addEventListener("click", event => {
-            console.log(el.id);
             const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
             LightBox.displayLightBox();
             this._photographerPageHeader.style.display = "none";

@@ -9,8 +9,9 @@
   padding: 0;
   box-sizing: border-box;
   --primary: #901c1c;
+  --primary-light: #d3573c;
   --secondary: #da8776;
-  --tertiary: #757575;
+  --tertiary: #525252;
 }
 
 /* MOBILE VERSION */
@@ -70,7 +71,7 @@ main {
 }
 
 .profileName {
-  color: var(--secondary);
+  color: var(--primary-light);
   font-size: 2.4em;
   font-weight: 300;
   margin: 0;
@@ -95,13 +96,6 @@ main {
   color: var(--tertiary);
   font-size: 0.8em;
   font-weight: 300;
-}
-
-.info-box {
-  width: 150px;
-  height: 50px;
-  background-color: var(--secondary);
-  color: #ffff;
 }
 
 /* TABLET VERSION */
