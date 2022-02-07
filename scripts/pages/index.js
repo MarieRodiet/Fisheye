@@ -16,11 +16,9 @@ class App {
     }
 
     async displayData(photographers) {
-        let tabindex = 0;
         photographers.forEach(photographer => {
-            const Template = new PhotographerCard(photographer, tabindex);
+            const Template = new PhotographerCard(photographer);
             this._photographersSection.appendChild(Template.createPhotographerCard());
-            tabindex++;
         })
     };
 
@@ -32,9 +30,6 @@ class App {
         }));
         allPhotographerCards.forEach(element => element.addEventListener("keypress", (event) => {
             event.preventDefault();
-            //let ref = e.target != null ? e.target : e.srcElement;
-            console.log(event.target);
-            console.log(event.srcElement);
             if (event.key === 'Enter') {
                 this.navigateLink(element.id);
             }
@@ -42,7 +37,9 @@ class App {
     }
 
     navigateLink(id) {
-        const url = new URL("http://127.0.0.1:5500/MarieMoore_6_22022022/photographer.html");
+        let currentUrl = window.location.protocol + window.location.hostname + ":" + window.location.port + "/MarieMoore_6_22022022/";
+        console.log(currentUrl);
+        const url = new URL(currentUrl + "photographer.html");
         url.searchParams.append("photographer", id);
         location.href = url;
     }
