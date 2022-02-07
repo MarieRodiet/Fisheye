@@ -54,6 +54,16 @@ main {
   cursor: pointer;
 }
 
+.card-link [role="link"] {
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.card-link[role="link"]:focus {
+  outline: 2px dotted var(--primary);
+}
+
 .photographer_card {
   display: flex;
   justify-content: center;

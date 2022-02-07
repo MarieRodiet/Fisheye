@@ -10,7 +10,7 @@ class MediaTemplate {
         if (this._media.video) {
             const videoCard = `
                 <figure class="picture-box">
-                    <video class="video" id=${this._media.id} width="350" height="300" muted>
+                    <video class="video" id=${this._media.id} width="350" height="300" alt=${this._media.title} muted>
                         <source src="assets/images/${this._name}/${this._media.video}" type="video/mp4">
                         Votre navigateur ne permet pas de lire les vidéos.
                     </video>

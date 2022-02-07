@@ -16,22 +16,35 @@ class App {
     }
 
     async displayData(photographers) {
+        let tabindex = 0;
         photographers.forEach(photographer => {
-            const Template = new PhotographerCard(photographer);
+            const Template = new PhotographerCard(photographer, tabindex);
             this._photographersSection.appendChild(Template.createPhotographerCard());
+            tabindex++;
         })
     };
 
     handleClick() {
-        let selected = {};
         const allPhotographerCards = document.querySelectorAll(".card-link");
         allPhotographerCards.forEach(element => element.addEventListener("click", (event) => {
             event.preventDefault();
-            const url = new URL("http://127.0.0.1:5500/MarieMoore_6_22022022/photographer.html");
-            url.searchParams.append("photographer", element.id);
-            location.href = url;
+            this.navigateLink(element.id);
         }));
-        return selected;
+        allPhotographerCards.forEach(element => element.addEventListener("keypress", (event) => {
+            event.preventDefault();
+            //let ref = e.target != null ? e.target : e.srcElement;
+            console.log(event.target);
+            console.log(event.srcElement);
+            if (event.key === 'Enter') {
+                this.navigateLink(element.id);
+            }
+        }));
+    }
+
+    navigateLink(id) {
+        const url = new URL("http://127.0.0.1:5500/MarieMoore_6_22022022/photographer.html");
+        url.searchParams.append("photographer", id);
+        location.href = url;
     }
 }
 
