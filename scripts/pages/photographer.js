@@ -114,12 +114,20 @@ class photographer {
     unableLightBox() {
         let boxes = document.querySelectorAll(".media .photo, .media .video");
         boxes.forEach(el => el.addEventListener("click", event => {
-            const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
-            LightBox.displayLightBox();
-            this._photographerPageHeader.style.display = "none";
-            this._main.style.display = "none";
+            this.openLightBox(event);
         }));
+        boxes.forEach(el => el.addEventListener("keypress", event => {
+            if (event.key === 'Enter') {
+                this.openLightBox(event);
+            }
+        }));
+    }
 
+    openLightBox(event) {
+        const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
+        LightBox.displayLightBox();
+        this._photographerPageHeader.style.display = "none";
+        this._main.style.display = "none";
     }
 
     getNameFromId(id) {

@@ -14,7 +14,7 @@ class PhotographerHeader {
         const header = `
         
         <div class="photographer-info">
-            <h2 class="PhotographerName">${this._photographer.name}</h2>
+            <h1 class="PhotographerName">${this._photographer.name}</h1>
             <p class="PhotographerLocation">${this._photographer.city}, ${this._photographer.country}</p>
             <p class="PhotographerTagline">${this._photographer.tagline}</p>
         </div>
