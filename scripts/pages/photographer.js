@@ -14,9 +14,11 @@ class photographer {
         this.Media = [];
         this.price = 0;
         this.name = "";
+        this.addedLikes = 0;
 
         this.init();
         this.unableLightBox = this.unableLightBox.bind(this);
+        //this.handleLikes = this.handleLikes.bind(this);
     }
 
     async init() {
@@ -81,13 +83,38 @@ class photographer {
             const Template = new MediaTemplate(m, this.name, this.price);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
         })
-        const Box = new PriceLikesTemplate(this.price, likes);
+        this.handlePriceLikesBox(this.price, likes);
+        this.handleLikes(likes);
+    }
+
+    handleLikes(likes) {
+        let defaultLikes = likes;
+        let hearts = document.querySelectorAll(".media .media-element .svg-box");
+        hearts.forEach(h => h.addEventListener("click", event => {
+            this.addedLikes += 1;
+            //update PriceLikes box
+            this._infoBox.innerHTML = "";
+            this._mediaSection.innerHTML = "";
+            this.handlePriceLikesBox(this.price, defaultLikes);
+            //update number of likes in MediaTemplate
+            for (const media of this.Media) {
+                if (media.id == h.id) {
+                    media.likes++;
+                }
+            }
+            this.displayMedia(this.Media);
+        }));
+    }
+
+    handlePriceLikesBox(price, likes) {
+        const Box = new PriceLikesTemplate(price, likes);
         this._infoBox.appendChild(Box.displayPriceAndLikes());
     }
 
     unableLightBox() {
-        let boxes = document.querySelectorAll(".media .media-element");
+        let boxes = document.querySelectorAll(".media .photo, .media .video");
         boxes.forEach(el => el.addEventListener("click", event => {
+            console.log(el.id);
             const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
             LightBox.displayLightBox();
             this._photographerPageHeader.style.display = "none";

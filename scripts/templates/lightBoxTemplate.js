@@ -46,7 +46,6 @@ class LightBoxTemplate {
                         <g><path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="currentColor"/></g>
                     </svg>
                 </div>`;
-            console.log("video");
             this.$wrapper.innerHTML = videoBox;
         }
         else {
@@ -71,7 +70,6 @@ class LightBoxTemplate {
                         <g><path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="currentColor"/></g>
                     </svg>
                 </div>`;
-            console.log("image");
             this.$wrapper.innerHTML = imageBox;
         }
         this.handleCloselightbox();
