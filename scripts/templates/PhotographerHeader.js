@@ -35,6 +35,7 @@ export default class PhotographerHeader {
                 Template.displayForm();
                 this._header.classList.add("blurry");
                 this._main.classList.add("blurry");
+                this.$modalContainer.querySelector("#firstname").focus();
                 Template.handleCloseModal();
             });
     }

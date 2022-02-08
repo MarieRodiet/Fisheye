@@ -23,6 +23,7 @@ class photographer {
         this.addedLikes = 0;
 
         this.unableLightBox = this.unableLightBox.bind(this);
+        this.handleLikes = this.handleLikes.bind(this);
     }
 
     async init() {
@@ -92,26 +93,28 @@ class photographer {
             const Template = new MediaTemplate(m, this.name, this.price);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
         })
-        this.handlePriceLikesBox(this.price, likes);
-        this.handleLikes(likes);
+        this.addedLikes = likes;
+        this.handlePriceLikesBox(this.price, this.addedLikes);
+        this.handleLikes();
     }
 
-    handleLikes(likes) {
-        let defaultLikes = likes;
+    //increment likes under picture and in PriceLikesBox
+    handleLikes() {
         let hearts = document.querySelectorAll(".media .media-element .svg-box");
         hearts.forEach(h => h.addEventListener("click", () => {
             this.addedLikes += 1;
-            //update PriceLikes box
-            this._infoBox.innerHTML = "";
-            this._mediaSection.innerHTML = "";
-            this.handlePriceLikesBox(this.price, defaultLikes);
-            //update number of likes in MediaTemplate
+            let index = -1;
             for (const media of this.Media) {
                 if (media.id == h.id) {
                     media.likes++;
+                    index = this.Media.indexOf(media);
                 }
             }
-            this.displayMedia(this.Media);
+            this._infoBox.innerHTML = "";
+            let nodeList = document.querySelectorAll(".media-element .picture-box .heart-content .likes");
+            nodeList[index].innerHTML = "";
+            nodeList[index].innerHTML = this.Media[index].likes;
+            this.handlePriceLikesBox(this.price, this.addedLikes);
         }));
     }
 
@@ -166,6 +169,8 @@ class photographer {
                 let sorted = this.sortMedia(sorter);
                 this._mediaSection.innerHTML = ""
                 this.displayMedia(sorted);
+                this.unableSorter();
+                this.unableLightBox(this.id);
             })
     }
 

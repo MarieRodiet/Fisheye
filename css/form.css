@@ -122,6 +122,8 @@ textarea:focus {
 
 .send_button:focus {
   outline: none;
+  background-color: #fafafa;
+  color: var(--primary);
 }
 
 /* TABLET VERSION */
