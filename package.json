@@ -1,0 +1,22 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "projet 6 frontend dev openclassrooms",
+  "main": "y",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarieRodiet/MarieMoore_6_22022022.git"
+  },
+  "author": "Marie Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarieRodiet/MarieMoore_6_22022022/issues"
+  },
+  "homepage": "https://github.com/MarieRodiet/MarieMoore_6_22022022#readme",
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  }
+}

@@ -26,5 +26,5 @@ class PhotographerCard {
         $wrapper.innerHTML += photographerCard;
         return $wrapper;
     }
-
 }
+
