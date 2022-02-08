@@ -12,14 +12,13 @@ class PhotographerHeader {
         const imagePath = "assets/photographers/";
         this.$wrapper.className = "header-wrapper";
         const header = `
-        
         <div class="photographer-info">
             <h1 class="PhotographerName">${this._photographer.name}</h1>
             <p class="PhotographerLocation">${this._photographer.city}, ${this._photographer.country}</p>
             <p class="PhotographerTagline">${this._photographer.tagline}</p>
         </div>
 
-        <button type="button" class="contact_button">Contactez-moi</button>
+        <button title="contactez-moi" type="button" class="contact_button">Contactez-moi</button>
 
         <img class="PhotographerProfile" src= ${imagePath}${this._photographer.portrait} alt="${this._photographer.name}" />
         `;

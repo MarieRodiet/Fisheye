@@ -1,11 +1,15 @@
 class App {
     constructor() {
         this._photographersSection = document.getElementById("photographer_section");
+        this.init();
     }
 
     async init() {
+        //get photographers data from api
         let photographers = await this.getData();
+        //insert photographer data into html
         await this.displayData(photographers);
+        //turn photographer cards into links by click on Enter key
         this.handleClick(photographers);
     };
 
@@ -46,5 +50,5 @@ class App {
 }
 
 const app = new App();
-app.init();
+
 

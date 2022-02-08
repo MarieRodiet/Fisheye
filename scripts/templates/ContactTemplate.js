@@ -29,24 +29,24 @@ class ContactTemplate {
         <form name="contact" id="form" method="GET" action="${url}">
             <div class="formData">
                 <label class="labels" for="firstname">Prénom</label>
-                <input class="inputs" minlength="2" type="text" id="firstname" name="firstname" required />
+                <input class="inputs" minlength="2" type="text" id="firstname" name="votre prénom" required />
             </div>
 
             <div class="formData">
                 <label class="labels" for="lastname">Nom</label>
-                <input class="inputs" minlength="2" type="text" id="lastname" name="lastname" required />
+                <input class="inputs" minlength="2" type="text" id="lastname" name="votre nom de famille" required />
             </div>
 
             <div class="formData">
                 <label class="labels" for="email">Email</label>
-                <input class="inputs" minlength="2" type="email" id="email" name="email" required />
+                <input class="inputs" minlength="2" type="email" id="email" name="votre email" required />
             </div>
 
             <div class="formData">
                 <label class="labels" for="message">Votre message</label>
-                <textarea class="inputs" minlength="2" id="message" type="text" name="message" rows="5" cols="33" required></textarea>
+                <textarea class="inputs" minlength="2" id="message" type="text" name="votre message" rows="5" cols="33" required></textarea>
             </div>
-        <button type="submit" class="send_button">Envoyer</button>
+        <button type="submit" class="send_button" aria-label="Envoyer">Envoyer</button>
         </form>`;
         this.$wrapper.innerHTML = form;
 

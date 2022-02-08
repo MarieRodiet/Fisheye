@@ -1,7 +1,6 @@
 class photographer {
     constructor() {
         this._mediaSection = document.querySelector(".media");
-        this._filter = document.querySelector("#filter");
         this._infoBox = document.querySelector(".likes-price");
         this._photographerPageHeader = document.querySelector(".photographerPage-header");
         this._modalContainer = document.querySelector("#modal-container");
@@ -9,7 +8,6 @@ class photographer {
 
         this.AllPhotographers = [];
         this.AllMedia = [];
-
         this.Photographer = {};
         this.Media = [];
         this.price = 0;
@@ -18,25 +16,29 @@ class photographer {
 
         this.init();
         this.unableLightBox = this.unableLightBox.bind(this);
-        //this.handleLikes = this.handleLikes.bind(this);
     }
 
     async init() {
+        //get photographer's id from url
         this.id = this.retrieveId();
+        //get all photophraphers and all media
         this.AllPhotographers = await this.retrievePhotographers();
         this.AllMedia = await this.retrieveAllMedia();
 
+        //get the photographer with the corresponding id and display info in header
         await this.findPhotographer(this.AllPhotographers, this.id).then((p) => {
             const person = new Photographer(p[0]);
             this.Photographer = person;
             this.price = person.price;
             this.displayInfo(person);
         });
+        //get the photographer's media and display, unable sorter and lightbox
         await this.retrieveMedia(this.AllMedia, this.id).then((m) => {
             this.displayMedia(m);
             this.unableSorter();
             this.unableLightBox(this.id);
         });
+
     }
 
     retrieveId() {
