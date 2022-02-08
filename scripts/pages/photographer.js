@@ -21,6 +21,7 @@ class photographer {
         this.price = 0;
         this.name = "";
         this.addedLikes = 0;
+        this.id = -1;
 
         this.unableLightBox = this.unableLightBox.bind(this);
         this.handleLikes = this.handleLikes.bind(this);
@@ -35,6 +36,7 @@ class photographer {
 
         //get the photographer with the corresponding id and display info in header
         await this.findPhotographer(this.AllPhotographers, this.id).then((p) => {
+            console.log(p[0]);
             const person = new Photographer(p[0]);
             this.Photographer = person;
             this.price = person.price;
@@ -46,6 +48,9 @@ class photographer {
             this.unableSorter();
             this.unableLightBox(this.id);
         });
+
+        this.handlePriceLikesBox(this.price, this.addedLikes);
+        this.handleLikes();
 
     }
 
@@ -94,8 +99,6 @@ class photographer {
             this._mediaSection.appendChild(Template.displayMediaTemplate());
         })
         this.addedLikes = likes;
-        this.handlePriceLikesBox(this.price, this.addedLikes);
-        this.handleLikes();
     }
 
     //increment likes under picture and in PriceLikesBox
