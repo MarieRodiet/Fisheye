@@ -1,4 +1,6 @@
-class LightBoxTemplate {
+import Media from "./../models/Media.js";
+
+export default class LightBoxTemplate {
     constructor(media, id, name) {
         //array of url for all the media
         this.media = media;

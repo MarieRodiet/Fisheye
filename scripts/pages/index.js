@@ -1,7 +1,9 @@
+import Api from "../api/api.js";
+import PhotographerCard from "./../templates/PhotographerCard.js";
+
 class App {
     constructor() {
         this._photographersSection = document.getElementById("photographer_section");
-        this.init();
     }
 
     async init() {
@@ -11,7 +13,7 @@ class App {
         await this.displayData(photographers);
         //turn photographer cards into links by click on Enter key
         this.handleClick(photographers);
-    };
+    }
 
     async getData() {
         const api = new Api("data/photographers.json");
@@ -24,7 +26,7 @@ class App {
             const Template = new PhotographerCard(photographer);
             this._photographersSection.appendChild(Template.createPhotographerCard());
         })
-    };
+    }
 
     handleClick() {
         const allPhotographerCards = document.querySelectorAll(".card-link");
@@ -50,5 +52,6 @@ class App {
 }
 
 const app = new App();
+app.init();
 
 

@@ -1,4 +1,4 @@
-class PriceLikesTemplate {
+export default class PriceLikesTemplate {
     constructor(price, likes) {
         this._price = price;
         this._likes = likes;

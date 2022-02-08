@@ -1,4 +1,6 @@
-class MediaTemplate {
+import Media from "./../models/Media.js";
+
+export default class MediaTemplate {
     constructor(media, name) {
         this._media = new Media(media);
         this._name = name;

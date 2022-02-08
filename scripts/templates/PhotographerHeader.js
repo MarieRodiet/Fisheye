@@ -1,4 +1,6 @@
-class PhotographerHeader {
+import ContactTemplate from "./ContactTemplate.js";
+
+export default class PhotographerHeader {
     constructor(photographer) {
         this._photographer = photographer;
         this.$wrapper = document.createElement("div");

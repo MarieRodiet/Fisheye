@@ -1,3 +1,11 @@
+import Photographer from "./../models/Photograper.js";
+import Api from "../api/api.js";
+import PhotographerHeader from "./../templates/PhotographerHeader.js";
+import MediaTemplate from "./../templates/MediaTemplate.js";
+import PriceLikesTemplate from "./../templates/PriceLikesTemplate.js";
+import LightBoxTemplate from "./../templates/lightBoxTemplate.js";
+
+
 class photographer {
     constructor() {
         this._mediaSection = document.querySelector(".media");
@@ -14,7 +22,6 @@ class photographer {
         this.name = "";
         this.addedLikes = 0;
 
-        this.init();
         this.unableLightBox = this.unableLightBox.bind(this);
     }
 
@@ -92,7 +99,7 @@ class photographer {
     handleLikes(likes) {
         let defaultLikes = likes;
         let hearts = document.querySelectorAll(".media .media-element .svg-box");
-        hearts.forEach(h => h.addEventListener("click", event => {
+        hearts.forEach(h => h.addEventListener("click", () => {
             this.addedLikes += 1;
             //update PriceLikes box
             this._infoBox.innerHTML = "";
@@ -187,6 +194,7 @@ class photographer {
 
 }
 const page = new photographer();
+page.init();
 
 
 

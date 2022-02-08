@@ -1,4 +1,4 @@
-class ContactTemplate {
+export default class ContactTemplate {
     constructor(name, id) {
         this._name = name;
         this._id = id;
@@ -106,7 +106,7 @@ class ContactTemplate {
         event.preventDefault();
         /*Creation d'un object FormData pour avoir un ensemble de 
         paires clé/valeur représentant les champs du formulaire et leurs valeurs */
-        const formData = new FormData(form);
+        const formData = new FormData(this._form);
         const entries = formData.entries();
         const data = Object.fromEntries(entries);
         const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

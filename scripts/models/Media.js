@@ -1,4 +1,4 @@
-class Media {
+export default class Media {
     constructor(data) {
         this._id = data.id;
         this._photographerId = data.photographerId;
@@ -33,7 +33,7 @@ class Media {
     get date() {
         return this._date;
     }
-    
+
     get price() {
         return this._price;
     }
