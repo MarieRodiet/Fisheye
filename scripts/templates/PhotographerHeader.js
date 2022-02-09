@@ -16,7 +16,7 @@ export default class PhotographerHeader {
         const header = `
         <div class="photographer-info">
             <h1 class="PhotographerName">${this._photographer.name}</h1>
-            <p class="PhotographerLocation">${this._photographer.city}, ${this._photographer.country}</p>
+            <h2 class="PhotographerLocation">${this._photographer.city}, ${this._photographer.country}</h2>
             <p class="PhotographerTagline">${this._photographer.tagline}</p>
         </div>
 

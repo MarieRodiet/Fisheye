@@ -54,6 +54,10 @@ main {
   grid-template-columns: 1fr;
 }
 
+#article-heading {
+  display: none;
+}
+
 .card-link {
   text-decoration: none;
   display: flex;

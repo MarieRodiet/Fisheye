@@ -20,13 +20,12 @@
   <header class="photographerPage-header">
     <a href="index.html"><img alt="Fisheye Home Page" src="assets/images/logo.png" class="logo" /></a>
   </header>
-  
+
   <main id="main">
+    <header class="photograph-header">
+    </header>
 
-    <section class="photograph-header">
-    </section>
-
-    <section id="filter-wrapper">
+    <div id="filter-wrapper">
       <label for="standard-select">Trier par:</label>
       <div class="select">
         <select id="standard-select">
@@ -35,25 +34,25 @@
           <option value="title">Titre</option>
         </select>
       </div>
-    </section>
+    </div>
 
-    <section class="media">
-    </section>
+    <article class="media"><h1 id="media-heading">Media section</h1>
+    </article>
 
-    <div class="likes-price"></div>
+    <aside class="likes-price"></aside>
   </main>
   <div id="modal-container">
   </div>
   <div id="lightbox-container"></div>
-  <script type="module" src="scripts/api/api.js" defer></script>
-  <script type="module" src="scripts/templates/PhotographerHeader.js" defer></script>
-  <script type="module" src="scripts/templates/MediaTemplate.js" defer></script>
-  <script type="module" src="scripts/templates/PriceLikesTemplate.js" defer></script>
-  <script type="module" src="scripts/templates/ContactTemplate.js" defer></script>
-  <script type="module" src="scripts/templates/lightBoxTemplate.js" defer></script>
-  <script type="module" src="scripts/pages/photographer.js" defer></script>
-  <script type="module" src="scripts/models/Photograper.js" defer></script>
-  <script type="module" src="scripts/models/Media.js" defer></script>
+  <script type="module" src="scripts/api/api.js"></script>
+  <script type="module" src="scripts/templates/PhotographerHeader.js"></script>
+  <script type="module" src="scripts/templates/MediaTemplate.js"></script>
+  <script type="module" src="scripts/templates/PriceLikesTemplate.js"></script>
+  <script type="module" src="scripts/templates/ContactTemplate.js"></script>
+  <script type="module" src="scripts/templates/lightBoxTemplate.js"></script>
+  <script type="module" src="scripts/pages/photographer.js"></script>
+  <script type="module" src="scripts/models/Photograper.js"></script>
+  <script type="module" src="scripts/models/Media.js"></script>
 
 
 
