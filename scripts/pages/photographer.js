@@ -1,10 +1,9 @@
 import Photographer from "./../models/Photograper.js";
 import Api from "../api/api.js";
 import PhotographerHeader from "./../templates/PhotographerHeader.js";
-import MediaTemplate from "./../templates/MediaTemplate.js";
 import PriceLikesTemplate from "./../templates/PriceLikesTemplate.js";
 import LightBoxTemplate from "./../templates/lightBoxTemplate.js";
-
+import MediaFactory from "../Factory/MediaFactory.js";
 
 class photographer {
     constructor() {
@@ -34,21 +33,6 @@ class photographer {
         this.AllPhotographers = await this.retrievePhotographers();
         this.AllMedia = await this.retrieveAllMedia();
 
-        //get the photographer with the corresponding id and display info in header
-        /*await this.retrievePhotographer(this.AllPhotographers, this.id).then((p) => {
-            console.log(p[0]);
-            const person = new Photographer(p[0]);
-            this.Photographer = person;
-            this.price = person.price;
-            this.displayInfo(person);
-        });
-        //get the photographer's media and display, unable sorter and lightbox
-        await this.retrieveMedia(this.AllMedia, this.id).then((m) => {
-            this.displayMedia(m);
-            this.unableSorter();
-            this.unableLightBox(this.id);
-        });*/
-
         await this.retrieveData(this.AllPhotographers, this.id, "id").then((p) => {
             const person = new Photographer(p[0]);
             this.Photographer = person;
@@ -57,6 +41,7 @@ class photographer {
         });
         //get the photographer's media and display, unable sorter and lightbox
         await this.retrieveData(this.AllMedia, this.id, "photographerId").then((m) => {
+            this.Media = m;
             this.displayMedia(m);
             this.unableSorter();
             this.unableLightBox(this.id);
@@ -101,7 +86,7 @@ class photographer {
         media.forEach(m => {
             this.name = this.getNameFromId(m.photographerId);
             likes += m.likes
-            const Template = new MediaTemplate(m, this.name, this.price);
+            const Template = new MediaFactory(m, this.name);
             this._mediaSection.appendChild(Template.displayMediaTemplate());
         })
         this.addedLikes = likes;
@@ -145,6 +130,7 @@ class photographer {
     }
 
     openLightBox(event) {
+        console.log(this.Media);
         const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
         LightBox.displayLightBox();
         this._photographerPageHeader.style.display = "none";
