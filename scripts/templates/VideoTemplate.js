@@ -1,8 +1,6 @@
-import Video from "./../models/Video.js";
-
 export default class VideoTemplate {
     constructor(media, name) {
-        this._media = new Video(media);
+        this._media = media;
         this._name = name;
     }
 

@@ -1,8 +1,6 @@
-import Image from "./../models/Image.js";
-
 export default class ImageTemplate {
     constructor(media, name) {
-        this._media = new Image(media);
+        this._media = media;
         this._name = name;
     }
 

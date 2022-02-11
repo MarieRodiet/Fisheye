@@ -23,12 +23,10 @@ export default class LightBoxTemplate {
         this.$wrapper.setAttribute("aria-label", "image closeup view");
         let box = "";
         if (this.media[this.index].video) {
-            const media = new Video(this.media[this.index]);
-            box = this.createVideoLightBox(media);
+            box = this.createVideoLightBox(this.media[this.index]);
         }
         else {
-            const media = new Image(this.media[this.index]);
-            box = this.createImageLightBox(media);
+            box = this.createImageLightBox(this.media[this.index]);
         }
         this.$wrapper.innerHTML = box;
         this.handleKey();

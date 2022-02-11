@@ -5,6 +5,7 @@ export default class MediaFactory {
     constructor(media, name) {
         this.type = media;
         this.name = name;
+        
         if (this.type.image) {
             return new ImageTemplate(media, name);
         }
