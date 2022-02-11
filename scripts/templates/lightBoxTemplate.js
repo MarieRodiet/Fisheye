@@ -1,6 +1,3 @@
-import Image from "./../models/Image.js";
-import Video from "./../models/Video.js";
-
 export default class LightBoxTemplate {
     constructor(media, id, name) {
         //array of url for all the media
