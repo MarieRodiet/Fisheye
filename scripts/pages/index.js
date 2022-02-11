@@ -16,8 +16,8 @@ class App {
     }
 
     async getData() {
-        const api = new Api("data/photographers.json");
-        const photographersData = await api.getPhotographers();
+        const api = new Api("data/photographers.json", "photographers");
+        const photographersData = await api.getJsonData();
         return photographersData;
     }
 

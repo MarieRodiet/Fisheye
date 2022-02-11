@@ -1,19 +1,13 @@
 export default class Api {
-    constructor(url) {
-        this._url = url
+    constructor(url, data) {
+        this._url = url;
+        this._data = data;
     }
 
-    async getPhotographers() {
+    async getJsonData() {
         return fetch(this._url)
             .then(res => res.json())
-            .then(res => res.photographers)
-            .catch(err => console.log('an error occurs', err))
-    }
-
-    async getMedia() {
-        return fetch(this._url)
-            .then(res => res.json())
-            .then(res => res.media)
+            .then(res => res[this._data])
             .catch(err => console.log('an error occurs', err))
     }
 }

@@ -61,8 +61,8 @@ class photographer {
     }
 
     async retrievePhotographers() {
-        let api = new Api("data/photographers.json");
-        let photographers = await api.getPhotographers();
+        let api = new Api("data/photographers.json", "photographers");
+        let photographers = await api.getJsonData();
         return photographers;
     }
 
@@ -73,8 +73,8 @@ class photographer {
     }
 
     async retrieveAllMedia() {
-        let api = new Api("data/photographers.json");
-        let media = await api.getMedia();
+        let api = new Api("data/photographers.json", "media");
+        let media = await api.getJsonData();
         return media;
     }
 
