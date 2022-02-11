@@ -130,7 +130,6 @@ class photographer {
     }
 
     openLightBox(event) {
-        console.log(this.Media);
         const LightBox = new LightBoxTemplate(this.Media, event.target.id, this.name);
         LightBox.displayLightBox();
         this._photographerPageHeader.style.display = "none";
