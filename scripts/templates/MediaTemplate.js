@@ -1,3 +1,4 @@
+import Photographer from "../models/Photograper.js";
 import Media from "./../models/Media.js";
 
 export default class MediaTemplate {

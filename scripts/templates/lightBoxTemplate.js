@@ -75,21 +75,9 @@ export default class LightBoxTemplate {
                 </div>`;
             this.$wrapper.innerHTML = imageBox;
         }
-        this.handleCloselightbox();
-        this.handleNext();
-        this.handlePrevious();
+        this.handleKey();
+        this.handleClick();
         this.$lightboxContainer.appendChild(this.$wrapper);
-    }
-
-    handleCloselightbox() {
-        window.addEventListener("keyup", (event) => {
-            if (event.key === "Escape") {
-                this.closelightbox();
-            }
-        });
-        this.$wrapper.querySelector(".close_lightbox").addEventListener("click", () => {
-            this.closelightbox();
-        });
     }
 
     closelightbox() {
@@ -98,14 +86,17 @@ export default class LightBoxTemplate {
         this._main.style.display = "block";
     }
 
-    handleNext() {
-        this.$wrapper.querySelector(".next").addEventListener("click", () => {
-            this.next();
-        });
-        window.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowRight") {
-                this.next();
-            }
+
+    handleClick() {
+        let events = [".next", ".previous", ".close_lightbox"];
+        events.forEach(e => this.$wrapper.querySelector(e).addEventListener("click", () => {
+            e === ".next" ? this.next() : e === ".previous" ? this.previous() : this.closelightbox();
+        }))
+    }
+
+    handleKey() {
+        window.addEventListener("keydown", (e) => {
+            e.key === "ArrowRight" ? this.next() : e.key === "ArrowLeft" ? this.previous() : this.closelightbox();
         })
     }
 
@@ -132,14 +123,5 @@ export default class LightBoxTemplate {
         this.displayLightBox();
     }
 
-    handlePrevious() {
-        this.$wrapper.querySelector(".previous").addEventListener("click", () => {
-            this.previous();
-        });
-        window.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowLeft") {
-                this.previous();
-            }
-        })
-    }
+
 }

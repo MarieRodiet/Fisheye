@@ -35,7 +35,7 @@ class photographer {
         this.AllMedia = await this.retrieveAllMedia();
 
         //get the photographer with the corresponding id and display info in header
-        await this.findPhotographer(this.AllPhotographers, this.id).then((p) => {
+        /*await this.retrievePhotographer(this.AllPhotographers, this.id).then((p) => {
             console.log(p[0]);
             const person = new Photographer(p[0]);
             this.Photographer = person;
@@ -47,7 +47,20 @@ class photographer {
             this.displayMedia(m);
             this.unableSorter();
             this.unableLightBox(this.id);
+        });*/
+
+        await this.retrieveData(this.AllPhotographers, this.id, "id").then((p) => {
+            const person = new Photographer(p[0]);
+            this.Photographer = person;
+            this.price = person.price;
+            this.displayInfo(person);
         });
+        //get the photographer's media and display, unable sorter and lightbox
+        await this.retrieveData(this.AllMedia, this.id, "photographerId").then((m) => {
+            this.displayMedia(m);
+            this.unableSorter();
+            this.unableLightBox(this.id);
+        })
 
         this.handlePriceLikesBox(this.price, this.addedLikes);
         this.handleLikes();
@@ -66,21 +79,14 @@ class photographer {
         return photographers;
     }
 
-    async findPhotographer(photographers, id) {
-        let clickedOn = photographers.filter(element => element.id == id);
-        this.Photographer = clickedOn;
-        return clickedOn;
-    }
-
     async retrieveAllMedia() {
         let api = new Api("data/photographers.json", "media");
         let media = await api.getJsonData();
         return media;
     }
 
-    async retrieveMedia(allMedia, id) {
-        let result = allMedia.filter(element => element.photographerId == id);
-        this.Media = result;
+    async retrieveData(data, value, property) {
+        let result = data.filter(element => element[property] == value);
         return result;
     }
 

@@ -16,39 +16,27 @@ export default class ContactTemplate {
 
     displayForm() {
         this.$wrapper.className = "modal";
-        const url = window.location.href;
         const form = `
-
         <header class="modal-header">
-        <h2>Contactez-moi <br/>${this._name}</h2>
-        <img class="close_modal" src="assets/icons/close.svg" />
+        <h2>Contactez-moi <br/>${this._name}</h2><img class="close_modal" src="assets/icons/close.svg" />
         </header>
-
-        <form name="contact" id="form" method="GET" action="${url}">
+        <form name="contact" id="form" method="GET" action="${window.location.href}">
             <div class="formData">
                 <label class="labels" for="firstname">Prénom</label>
-                <input class="inputs" minlength="2" type="text" id="firstname" name="prenom" required />
-            </div>
-
+                <input class="inputs" minlength="2" type="text" id="firstname" name="prenom" required /></div>
             <div class="formData">
                 <label class="labels" for="lastname">Nom</label>
-                <input class="inputs" minlength="2" type="text" id="lastname" name="nom" required />
-            </div>
-
+                <input class="inputs" minlength="2" type="text" id="lastname" name="nom" required /></div>
             <div class="formData">
                 <label class="labels" for="email">Email</label>
-                <input class="inputs" minlength="2" type="email" id="email" name="email" required />
-            </div>
-
+                <input class="inputs" minlength="2" type="email" id="email" name="email" required /> </div>
             <div class="formData">
                 <label class="labels" for="message">Votre message</label>
-                <textarea class="inputs" minlength="2" id="message" type="text" name="message" rows="5" cols="33" required></textarea>
-            </div>
+                <textarea class="inputs" minlength="2" id="message" type="text" name="message" rows="5" cols="33" required></textarea></div>
         <button type="submit" class="send_button" aria-label="Envoyer">Envoyer</button>
         </form>`;
         this.$wrapper.innerHTML = form;
         this.$wrapper.querySelector("#firstname").focus();
-
         this.handleData(this._name);
         this._modalContainer.appendChild(this.$wrapper);
     }
@@ -72,13 +60,11 @@ export default class ContactTemplate {
 
     handleData() {
         this.$wrapper.querySelector("#form").addEventListener("submit", this.validateData);
-
         const inputs = this.$wrapper.querySelectorAll(".inputs");
         inputs.forEach(input => {
             input.addEventListener('change', function (event) {
                 const answer = event.target.value;
                 const result = document.getElementById(this.id);
-                const onlyLettersRegex = /[a-zA-Z]{2,}/;
                 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (result.id == "email") {
                     if (emailRegex.test(answer)) {
@@ -89,7 +75,7 @@ export default class ContactTemplate {
                     }
                 }
                 else {
-                    if (onlyLettersRegex.test(answer)) {
+                    if (/[a-zA-Z]{2,}/.test(answer)) {
                         input.className = "validInput";
                     }
                     else {
