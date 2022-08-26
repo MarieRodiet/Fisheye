@@ -43,7 +43,7 @@ class App {
     }
 
     navigateLink(id) {
-        let currentUrl = window.location.protocol + window.location.hostname + ":" + window.location.port + "/Fisheye";
+        let currentUrl = window.location.protocol + window.location.hostname + ":" + window.location.port + "/Fisheye/";
         const url = new URL(currentUrl + "photographer.html");
         url.searchParams.append("photographer", id);
         location.href = url;
