@@ -43,8 +43,7 @@ class App {
     }
 
     navigateLink(id) {
-        let currentUrl = window.location.protocol + window.location.hostname + ":" + window.location.port + "/MarieMoore_6_22022022/";
-        console.log(currentUrl);
+        let currentUrl = window.location.protocol + window.location.hostname + ":" + window.location.port + "/";
         const url = new URL(currentUrl + "photographer.html");
         url.searchParams.append("photographer", id);
         location.href = url;
